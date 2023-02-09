@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from rest_framework import status, viewsets, mixins
+from .models import RealEstate
+from .serializers import RealEstateSerializer
 
-# Create your views here.
+
+class RealEstateViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
+    serializer_class = RealEstateSerializer
+    queryset = RealEstate.objects.select_related('location').prefetch_related('options')
