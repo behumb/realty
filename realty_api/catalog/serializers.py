@@ -5,7 +5,7 @@ from .models import Option, RealEstate, Location
 class OptionSerializer(ModelSerializer):
     class Meta:
         model = Option
-        fields = ('value', )
+        fields = ('value',)
 
 
 class LocationSerializer(ModelSerializer):
@@ -15,7 +15,6 @@ class LocationSerializer(ModelSerializer):
 
 
 class RealEstateShortSerializer(ModelSerializer):
-
     class Meta:
         model = RealEstate
         fields = (
@@ -23,7 +22,10 @@ class RealEstateShortSerializer(ModelSerializer):
             'name',
             'description',
             'get_image',
+            'cost',
         )
+
+
 class RealEstateSerializer(ModelSerializer):
     options = OptionSerializer(many=True)
     location = LocationSerializer()

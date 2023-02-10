@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'nested_inline',
     "corsheaders",
+    'django_filters',
 
     'catalog',
 ]
@@ -36,6 +37,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "corsheaders.middleware.CorsMiddleware",
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
+
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",

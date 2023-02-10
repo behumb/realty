@@ -19,6 +19,11 @@ const actions = {
             commit(GET_ALL_REAL_ESTATES, response.data)
             return response
         })
+    },
+    orderByCost({commit} ,value) {
+        return Catalog.orderByCost(value).then(response => {
+            return response
+        })
     }
 }
 
