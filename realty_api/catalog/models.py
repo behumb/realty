@@ -22,6 +22,10 @@ class RealEstate(models.Model):
     def __str__(self):
         return self.location.address
 
+    def get_image(self):
+        if self.image:
+            return 'http://127.0.0.1:8000' + self.image.url
+        return ''
 
 class Location(models.Model):
     address = models.CharField('Address', max_length=150)

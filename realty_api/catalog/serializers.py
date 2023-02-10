@@ -14,10 +14,27 @@ class LocationSerializer(ModelSerializer):
         fields = ('address', 'state', 'latitude', 'longitude',)
 
 
+class RealEstateShortSerializer(ModelSerializer):
+
+    class Meta:
+        model = RealEstate
+        fields = (
+            'id',
+            'name',
+            'description',
+            'get_image',
+        )
 class RealEstateSerializer(ModelSerializer):
     options = OptionSerializer(many=True)
     location = LocationSerializer()
 
     class Meta:
         model = RealEstate
-        fields = '__all__'
+        fields = (
+            'id',
+            'name',
+            'description',
+            'get_image',
+            'location',
+            'options'
+        )

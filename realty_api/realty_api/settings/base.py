@@ -21,6 +21,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'nested_inline',
+    "corsheaders",
 
     'catalog',
 ]
@@ -33,6 +34,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",
+    "http://127.0.0.1:8080",
 ]
 
 ROOT_URLCONF = 'realty_api.urls'
@@ -56,7 +63,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'realty_api.wsgi.application'
 
 DATABASES = {
-    'default': env.db('DATABASE_URL', default='postgres://realty_admin:1234@172.26.212.187:5432/realty_db')
+    'default': env.db('DATABASE_URL', default='postgres://realty_admin:1234@172.24.152.7:5432/realty_db')
 }
 
 AUTH_PASSWORD_VALIDATORS = [

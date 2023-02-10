@@ -1,0 +1,1 @@
+export const GET_ALL_REAL_ESTATES = 'GET_ALL_REAL_ESTATES'
