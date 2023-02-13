@@ -1,11 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from .models import Option, RealEstate, Location
-
-
-class OptionSerializer(ModelSerializer):
-    class Meta:
-        model = Option
-        fields = ('value',)
+from .models import RealEstate, Location
 
 
 class LocationSerializer(ModelSerializer):
@@ -27,7 +21,6 @@ class RealEstateShortSerializer(ModelSerializer):
 
 
 class RealEstateSerializer(ModelSerializer):
-    options = OptionSerializer(many=True)
     location = LocationSerializer()
 
     class Meta:
@@ -38,5 +31,4 @@ class RealEstateSerializer(ModelSerializer):
             'description',
             'get_image',
             'location',
-            'options'
         )

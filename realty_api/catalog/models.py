@@ -2,6 +2,13 @@ from django.db import models
 from .services import real_estate_dir_path
 
 
+class PropertyType(models.Model):
+    name = models.CharField('Name', max_length=50)
+
+    def __str__(self):
+        return self.name
+
+
 class RealEstate(models.Model):
     # Choices
     DEAL_TYPE = (
@@ -14,6 +21,11 @@ class RealEstate(models.Model):
     description = models.TextField('Description')
     image = models.ImageField('Image', upload_to=real_estate_dir_path)
     cost = models.FloatField('Cost')
+    bedroom_count = models.PositiveIntegerField('Bedrooms')
+    bathroom_count = models.PositiveIntegerField('Bathrooms')
+    property_type = models.ForeignKey(PropertyType, on_delete=models.SET_NULL, null=True, related_name='real_estates')
+    total_square = models.FloatField('Total square')
+    living_square = models.FloatField('Living_square')
     year_build = models.IntegerField('Year build')
     parking_space_count = models.IntegerField('Parking space count')
     parking_detail = models.CharField('Parking detail', max_length=50)
@@ -27,14 +39,10 @@ class RealEstate(models.Model):
             return 'http://127.0.0.1:8000' + self.image.url
         return ''
 
+
 class Location(models.Model):
     address = models.CharField('Address', max_length=150)
-    state = models.CharField('State', max_length=50)
+    city = models.CharField('City', max_length=50)
     latitude = models.FloatField('Latitude')
     longitude = models.FloatField('Longitude')
     real_estate = models.OneToOneField(RealEstate, on_delete=models.CASCADE, related_name='location')
-
-
-class Option(models.Model):
-    value = models.CharField('Value', max_length=100)
-    real_estate = models.ForeignKey(RealEstate, on_delete=models.CASCADE, related_name='options')

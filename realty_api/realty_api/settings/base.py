@@ -69,7 +69,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'realty_api.wsgi.application'
 
 DATABASES = {
-    'default': env.db('DATABASE_URL', default='postgres://realty_admin:1234@172.24.152.7:5432/realty_db')
+    'default': env.db('DATABASE_URL', default='postgres://realty_admin:1234@172.24.150.20:5432/realty_db')
 }
 
 AUTH_PASSWORD_VALIDATORS = [

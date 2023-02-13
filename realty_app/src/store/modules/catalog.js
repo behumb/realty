@@ -24,6 +24,11 @@ const actions = {
         return Catalog.orderByCost(value).then(response => {
             return response
         })
+    },
+    filterCatalog({commit}, data) {
+        return Catalog.filter(data).then(response => {
+            return response
+        })
     }
 }
 
